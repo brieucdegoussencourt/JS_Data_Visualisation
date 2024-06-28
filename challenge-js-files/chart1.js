@@ -33,6 +33,11 @@ function tableToObject() {
     return result;
 }
 
+// // Usage example
+// console.log(tableToObject());
+
+// create random color
+
 function getRandomColor() {
     const letters = '0123456789ABCDEF';
     let color = '#';
@@ -42,8 +47,6 @@ function getRandomColor() {
     return color;
 }
 
-// // Usage example
-// console.log(tableToObject());
 
 // Create a chart from tableToObject data via chart.js and place it in HTML element with id "chart1"
 (async function() {
