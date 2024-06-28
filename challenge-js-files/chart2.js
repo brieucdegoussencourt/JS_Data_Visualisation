@@ -18,9 +18,7 @@ function tableToObject() {
 
     return result;
 }
-console.log(tableToObject());  // Debugging line
 
-// Create a chart from tableToObject data via chart.js and place it in HTML element with id "chart2"
 (async function() {
     const data = tableToObject();
     console.log(data);  // Debugging line
@@ -34,7 +32,7 @@ console.log(tableToObject());  // Debugging line
     new Chart(
         document.getElementById('chart2'),
         {
-            type: 'line',  // Changed chart type to 'line'
+            type: 'bar',  // Horizontal bar chart
             data: {
                 labels: countries,
                 datasets: [
@@ -55,10 +53,11 @@ console.log(tableToObject());  // Debugging line
                 ]
             },
             options: {
+                indexAxis: 'y',  // This makes the chart horizontal
                 responsive: true,
                 maintainAspectRatio: false,
                 scales: {
-                    y: {
+                    x: {
                         beginAtZero: true
                     }
                 },
