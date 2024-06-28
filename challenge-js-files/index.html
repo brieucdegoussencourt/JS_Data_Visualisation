@@ -82,6 +82,13 @@
     .content {
       padding: 2rem 4rem;
     }
+   
+    #chart2  {
+    display: block;
+    width: 100% !important;
+    height: 400px !important;
+    max-height: 400px;
+    }
   </style>
 </head>
 
@@ -1470,9 +1477,9 @@
               <h4>
                 <span class="mw-headline" id="Homicides">Homicide</span>
               </h4>
-              
+
               <!-- adding space fort chart 2 -->
-              <canvas id="chart2" height="500"></canvas>
+              <canvas id="chart2" style="height: 400px;"></canvas>
 
               <table cellspacing="0" cellpadding="0" id="table2">
                 <caption>Prison population, average per year, 2007-09 and 2010-12
@@ -2069,7 +2076,6 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
   <script src="chart1.js"></script>
   <script src="chart2.js"></script>
 

@@ -3,7 +3,6 @@ function tableToObject() {
     const rows = table.getElementsByTagName('tr');
     const result = [];
 
-    // Iterate over the table rows starting from the second row (skipping the header)
     for (let i = 1; i < rows.length; i++) {
         const cells = rows[i].getElementsByTagName('td');
         const countryData = {
@@ -19,19 +18,23 @@ function tableToObject() {
 
     return result;
 }
+console.log(tableToObject());  // Debugging line
 
 // Create a chart from tableToObject data via chart.js and place it in HTML element with id "chart2"
 (async function() {
     const data = tableToObject();
+    console.log(data);  // Debugging line
 
     const countries = data.map(country => country.country);
+    console.log(countries);  // Debugging line
+
     const data2007_09 = data.map(country => country.data["2007-09"]);
     const data2010_12 = data.map(country => country.data["2010-12"]);
 
     new Chart(
         document.getElementById('chart2'),
         {
-            type: 'bar',
+            type: 'line',  // Changed chart type to 'line'
             data: {
                 labels: countries,
                 datasets: [
