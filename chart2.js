@@ -20,7 +20,6 @@ function tableToObject() {
 
     return result;
 }
-console.log(tableToObject());  // Debugging line
 
 // Create a chart from tableToObject data via chart.js and place it in HTML element with id "chart2"
 (async function() {
