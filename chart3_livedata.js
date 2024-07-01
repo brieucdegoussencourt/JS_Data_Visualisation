@@ -53,6 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const newDataPoints = await fetchData();
             chart.data.datasets[0].data = newDataPoints;
             chart.update();
+            console.log('Chart updated');
         }
 
         // Update chart data every second
