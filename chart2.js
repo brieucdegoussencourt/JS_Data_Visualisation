@@ -33,7 +33,7 @@ console.log(tableToObject());  // Debugging line
     new Chart(
         document.getElementById('chart2'),
         {
-            type: 'line',  // Changed chart type to 'line'
+            type: 'line',
             data: {
                 labels: countries,
                 datasets: [
