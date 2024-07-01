@@ -1,3 +1,5 @@
+//The fetchData function retrieves data from the external JSON source and maps it to the format required by Chart.js.
+
 async function fetchData() {
     console.log('Fetching data...');
     const response = await fetch("https://canvasjs.com/services/data/datapoints.php?xstart=1&ystart=10&length=10&type=json");
@@ -5,6 +7,8 @@ async function fetchData() {
     console.log('Data fetched:', data);
     return data.map(point => ({ x: point[0], y: parseInt(point[1]) }));
 }
+
+//The createChart function initializes the Chart.js chart with the fetched data points.
 
 async function createChart() {
     console.log('Creating chart...');
@@ -22,6 +26,7 @@ async function createChart() {
                 fill: false
             }]
         },
+        //The chart options include the x-axis set to ‘linear’ and the y-axis starting from zero.
         options: {
             scales: {
                 x: {
@@ -40,7 +45,8 @@ async function createChart() {
             }
         }
     });
-
+    
+    //The updateChart function fetches new data and updates the chart.
     async function updateChart() {
         console.log('Updating chart...');
         const newDataPoints = await fetchData();
