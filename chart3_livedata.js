@@ -1,7 +1,7 @@
 // uses the fetch API to get data from the external JSON source. 
 //The data is then mapped to the format required by Chart.js.
 async function fetchData() {
-    const response = await fetch("https://canvasjs.com/services/data/datapoints.php?xstart=1&ystart=10&length=10&type=json");
+    const response = await fetch("https://canvasjs.com/services/data/datapoints.php");
     const data = await response.json();
     return data.map(point => ({ x: point[0], y: parseInt(point[1]) }));
 }
