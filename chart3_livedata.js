@@ -1,32 +1,29 @@
-//The fetchData function retrieves data from the external JSON source and maps it to the format required by Chart.js.
-
+// Function to fetch data from external source
 async function fetchData() {
-    console.log('Fetching data...');
-    const response = await fetch("https://canvasjs.com/services/data/datapoints.php?xstart=1&ystart=10&length=10&type=json");
-    const data = await response.json();
-    console.log('Data fetched:', data);
+    console.log('Fetching data...'); // Log for fetching data
+    const response = await fetch(`https://canvasjs.com/services/data/datapoints.php?xstart=1&ystart=10&length=10&type=json&_=${new Date().getTime()}`);    const data = await response.json();
+    console.log('Data fetched:', data); // Log fetched data
     return data.map(point => ({ x: point[0], y: parseInt(point[1]) }));
 }
 
-//The createChart function initializes the Chart.js chart with the fetched data points.
-
+// Function to create the chart
 async function createChart() {
-    console.log('Creating chart...');
+    console.log('Creating chart...'); // Log for creating chart
     const ctx = document.getElementById('chart3').getContext('2d');
-    const dataPoints = await fetchData();
+    const dataPoints = await fetchData(); // Fetch initial data points
 
+    // Initialize the Chart.js chart
     const chart = new Chart(ctx, {
         type: 'line',
         data: {
             datasets: [{
                 label: 'Live Data',
-                data: dataPoints,
+                data: dataPoints, // Initial data points
                 backgroundColor: 'rgba(54, 162, 235, 0.5)',
                 borderColor: 'rgba(54, 162, 235, 1)',
                 fill: false
             }]
         },
-        //The chart options include the x-axis set to ‘linear’ and the y-axis starting from zero.
         options: {
             scales: {
                 x: {
@@ -45,19 +42,19 @@ async function createChart() {
             }
         }
     });
-    
-    //The updateChart function fetches new data and updates the chart.
+
+    // Function to update the chart with new data
     async function updateChart() {
-        console.log('Updating chart...');
-        const newDataPoints = await fetchData();
-        console.log('New data points:', newDataPoints);
-        chart.data.datasets[0].data = newDataPoints;
-        chart.update();
-        console.log('Chart updated');
+        console.log('Updating chart...'); // Log for updating chart
+        const newDataPoints = await fetchData(); // Fetch new data points
+        console.log('New data points:', newDataPoints); // Log new data points
+        chart.data.datasets[0].data = newDataPoints; // Update chart data
+        chart.update(); // Refresh chart
+        console.log('Chart updated'); // Log chart updated
     }
 
-    // Update chart data every second
+    // Set interval to update chart data every second
     setInterval(updateChart, 1000);
 }
 
-createChart();
+createChart(); // Call the function to create the chart
