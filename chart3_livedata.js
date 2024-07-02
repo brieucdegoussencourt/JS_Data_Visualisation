@@ -25,6 +25,9 @@ async function createChart() {
             }]
         },
         options: {
+            maintainAspectRatio: true,
+            responsive: true,
+            
             scales: {
                 x: {
                     type: 'linear',
