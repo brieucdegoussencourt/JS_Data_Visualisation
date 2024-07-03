@@ -1,7 +1,8 @@
 // Function to fetch data from external source
 async function fetchData() {
     console.log('Fetching data...'); // Log for fetching data
-    const response = await fetch(`https://canvasjs.com/services/data/datapoints.php?xstart=1&ystart=10&length=10&type=json&_=${new Date().getTime()}`);    const data = await response.json();
+    const response = await fetch(`https://canvasjs.com/services/data/datapoints.php?xstart=1&ystart=10&length=10&type=json&_=${new Date().getTime()}`);    
+    const data = await response.json();
     console.log('Data fetched:', data); // Log fetched data
     return data.map(point => ({ x: point[0], y: parseInt(point[1]) }));
 }
